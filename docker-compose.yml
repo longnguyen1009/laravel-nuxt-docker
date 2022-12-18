@@ -1,0 +1,105 @@
+version: '3.8'
+services:
+
+  #Nginx Service
+  webserver:
+    image: nginx:1.19
+    container_name: webserver
+    restart: unless-stopped
+    volumes:
+      - ./api:/var/www
+      - ./LOCAL/nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+      - "82:82"
+    links:
+      - api
+      # - client
+    networks:
+      - app-network
+
+  #PHP Service
+  api:
+    image: sebalaini/php8:latest
+    container_name: api
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./api:/var/www
+      - ./LOCAL/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./LOCAL/deploy.sh:/var/www/LOCAL/deploy.sh
+    depends_on:
+      - redis
+    networks:
+      - app-network
+
+  #MySQL Service
+  db:
+    # don't use a version 8 image or it will fail to connect
+    image: mysql:5.7
+    container_name: db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laraveluser
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./LOCAL/mysql/my.cnf:/etc/my.cnf
+    ports:
+      - "3306:3306"
+    networks:
+      - app-network
+
+  #phpmyadmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: dev_pma
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+    ports:
+      - 8080:80
+    links:
+      - db
+    networks:
+      - app-network
+
+  # Client container
+  # client:
+  #   build:
+  #     context: LOCAL/node
+  #     dockerfile: Dockerfile
+  #   container_name: client
+  #   volumes:
+  #     - ./client:/var/www/client
+  #   ports:
+  #     - "24678:24678"
+  #     - "3000:3000"
+  #   networks:
+  #     - app-network
+
+  # Redis container
+  redis:
+    image: "redis:alpine"
+    container_name: redis
+    restart: always
+    command: redis-server
+    ports:
+      - 63791:6379
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+
+#Volumes
+# volumes:
+#   dbdata:
+#     driver: local
