@@ -61,9 +61,7 @@
     "vitest": "^0.23.4",
     "vue": "^3.2.41",
     "vue-tsc": "^1.0.9",
-    "webpack": ">=5.0.0 <6.0.0",
-    "@nuxtjs/auth-next": "5.0.0-1667386184.dfbbb54",
-    "@nuxtjs/axios": "^5.13.6"
+    "webpack": ">=5.0.0 <6.0.0"
   },
   "lint-staged": {
     "**/*.{js,ts,vue,html}": [

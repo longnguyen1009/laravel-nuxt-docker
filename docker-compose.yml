@@ -14,7 +14,7 @@ services:
       - "82:82"
     links:
       - api
-      # - client
+      - client
     networks:
       - app-network
 
@@ -70,18 +70,18 @@ services:
       - app-network
 
   # Client container
-  # client:
-  #   build:
-  #     context: LOCAL/node
-  #     dockerfile: Dockerfile
-  #   container_name: client
-  #   volumes:
-  #     - ./client:/var/www/client
-  #   ports:
-  #     - "24678:24678"
-  #     - "3000:3000"
-  #   networks:
-  #     - app-network
+  client:
+    build:
+      context: LOCAL/node
+      dockerfile: Dockerfile
+    container_name: client
+    volumes:
+      - ./client:/var/www/client
+    ports:
+      - "24678:24678"
+      - "3000:3000"
+    networks:
+      - app-network
 
   # Redis container
   redis:
