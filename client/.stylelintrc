@@ -1,0 +1,44 @@
+{
+  "plugins": [
+      "stylelint-declaration-strict-value"
+  ],
+  "extends": [
+      "stylelint-config-recommended",
+      "stylelint-config-standard-scss"
+  ],
+  "rules": {
+    "indentation": [
+      2,
+      {
+        "baseIndentLevel": 0
+      }
+    ],
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "function",
+          "if",
+          "each",
+          "include",
+          "mixin",
+          "at-root",
+          "extend"
+        ]
+      }
+    ],
+    "string-quotes": "single",
+    "no-empty-source": null,
+    "no-descending-specificity": null,
+    "declaration-no-important": true,
+    "property-no-vendor-prefix": null,
+    "color-function-notation": null,
+    "alpha-value-notation": "number",
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": ["v-deep"]
+      }
+    ]
+  }
+}
