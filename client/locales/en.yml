@@ -14,6 +14,10 @@ pages:
     title: blank page
     description: this is a blank page
     just_blank_page_with_title: just blank page with title
+  login:
+    nav: Login
+    title: Login Page
+    description: this is a login page
   post:
     nav: post
     title: post

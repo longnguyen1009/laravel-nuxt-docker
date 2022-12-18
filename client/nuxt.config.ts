@@ -37,6 +37,8 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-windicss',
+    '@nuxt/axios',
+    '@nuxt/auth-next',
   ],
 
   // experimental features

@@ -9,11 +9,11 @@ definePageMeta({
   layout: 'page',
 })
 useHead(() => ({
-  title: capitalize(t('pages.blank.title')),
+  title: capitalize(t('pages.login.title')),
   meta: [
     {
       name: 'description',
-      content: t('pages.blank.description'),
+      content: t('pages.login.description'),
     },
   ],
 }))
@@ -22,13 +22,13 @@ useHead(() => ({
 <template>
   <PageWrapper>
     <PageHeader>
-      <PageTitle :text="$t('pages.blank.title')" class="capitalize" />
+      <PageTitle :text="$t('pages.login.title')" class="capitalize" />
     </PageHeader>
     <PageBody>
       <PageSection>
-        <div v-for="i in 30" :key="i" class="text-6xl uppercase">
-          {{ $t('pages.blank.just_blank_page_with_title') }}
-        </div>
+        <FormLogin>
+          
+        </FormLogin>
       </PageSection>
     </PageBody>
   </PageWrapper>

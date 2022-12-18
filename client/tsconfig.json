@@ -9,7 +9,8 @@
       "@vueuse/nuxt",
       "@intlify/nuxt3",
       "@pinia/nuxt",
-      "unplugin-icons/types/vue"
+      "unplugin-icons/types/vue",
+      "@nuxtjs/auth-next",
     ]
   }
 }
