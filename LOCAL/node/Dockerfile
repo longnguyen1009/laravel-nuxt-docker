@@ -4,8 +4,10 @@ FROM node:16.13.0-alpine
 # Set up work directory
 WORKDIR /var/www/client
 
+RUN yarn
+
 # Configure host
 ENV HOST 0.0.0.0
 
 # Init command
-CMD ["sh", "-c", "yarn && yarn dev"]
+CMD ["sh", "-c", "yarn dev"]
