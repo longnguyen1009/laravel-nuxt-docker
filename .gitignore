@@ -90,5 +90,5 @@ sw.*
 /mysql/*
 
 # TEST
-client/.output/
-client2/
+
+client/node_modules
