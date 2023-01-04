@@ -4,8 +4,6 @@ FROM node:16.13.0-alpine
 # Set up work directory
 WORKDIR /var/www/client
 
-RUN yarn
-
 # Configure host
 ENV HOST 0.0.0.0
 
